@@ -13,6 +13,9 @@ import com.nighthawk.spring_portfolio.mvc.note.NoteJpaRepository;
 import com.nighthawk.spring_portfolio.mvc.person.Person;
 import com.nighthawk.spring_portfolio.mvc.person.PersonDetailsService;
 
+import com.nighthawk.spring_portfolio.mvc.playersTest.PTest;
+import com.nighthawk.spring_portfolio.mvc.playersTest.PTestJpaRepository;
+
 import java.util.List;
 
 @Component
@@ -21,6 +24,7 @@ public class ModelInit {
     @Autowired JokesJpaRepository jokesRepo;
     @Autowired NoteJpaRepository noteRepo;
     @Autowired PersonDetailsService personService;
+        @Autowired PTestJpaRepository pTestRepo;
 
     @Bean
     CommandLineRunner run() {  // The run() method will be executed after the application starts
@@ -32,6 +36,13 @@ public class ModelInit {
                 List<Jokes> jokeFound = jokesRepo.findByJokeIgnoreCase(joke);  // JPA lookup
                 if (jokeFound.size() == 0)
                     jokesRepo.save(new Jokes(null, joke)); //JPA save
+            }
+
+            String[] jokesArray2 = PTest.init();
+            for (String joke : jokesArray2) {
+                List<PTest> jokeFound = pTestRepo.findByJokeIgnoreCase(joke);  // JPA lookup
+                if (jokeFound.size() == 0)
+                    pTestRepo.save(new PTest(null, joke, -1)); //JPA save
             }
 
             // Person database is populated with test data
