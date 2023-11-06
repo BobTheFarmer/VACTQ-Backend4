@@ -25,12 +25,7 @@ public class PTestApiController {
         // ResponseEntity returns List of Jokes provide by JPA findAll()
         return new ResponseEntity<>( repository.findAll(), HttpStatus.OK);
     }
-
-    /* Update Like
-     * @PutMapping annotation is used for mapping HTTP PUT requests onto specific handler methods.
-     * @PathVariable annotation extracts the templated part {id}, from the URI
-     */
-
+    // Updates position
     @PostMapping("/move/{id}/{newPos}")
     public ResponseEntity<PTest> setPos(@PathVariable long id, @PathVariable int newPos) {
         /* 
@@ -48,8 +43,4 @@ public class PTestApiController {
         // Bad ID
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);  // Failed HTTP response: status code, headers, and body
     }
-
-
-    /* Update Jeer
-     */
 }
