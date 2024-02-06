@@ -16,7 +16,7 @@ public class JokesApiController {
     @Autowired
     private JokesJpaRepository repository;
 
-    /* GET List of Jokes
+    /* GET List of Phrases
      * @GetMapping annotation is used for mapping HTTP GET requests onto specific handler methods.
      */
     @GetMapping("/")
@@ -24,12 +24,4 @@ public class JokesApiController {
         // ResponseEntity returns List of Jokes provide by JPA findAll()
         return new ResponseEntity<>( repository.findAll(), HttpStatus.OK);
     }
-
-    /* Update Like
-     * @PutMapping annotation is used for mapping HTTP PUT requests onto specific handler methods.
-     * @PathVariable annotation extracts the templated part {id}, from the URI
-     */
-
-    /* Update Jeer
-     */
 }

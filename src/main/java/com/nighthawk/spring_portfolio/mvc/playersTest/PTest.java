@@ -16,12 +16,12 @@ public class PTest {
     private Long id;
 
     @Column(unique=true)
-    private String joke;
+    private String playerName;
 
     private int pos;
     //private int pos;
 
-    // starting jokes
+    // starting players
     public static String[] init() {
         final String[] playerNames2 = {
             "P1",
@@ -29,8 +29,6 @@ public class PTest {
             "P3",
             "P4"
         };
-
-        final String[] a = {"a", "b"};
         return playerNames2;
     }
 }
